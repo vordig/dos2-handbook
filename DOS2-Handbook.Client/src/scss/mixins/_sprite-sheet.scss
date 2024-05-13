@@ -1,0 +1,47 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+
+@mixin define-sprite-sheet($url, $sprite-size, $columns-count, $rows-count, $class-name, $sprites-map, $sprite-sizes-map: ()) {
+    span.#{$class-name} {
+        $sprite-sheet-width: $columns-count * $sprite-size;
+        $sprite-sheet-height: $rows-count * $sprite-size;
+        $has-variable-sizes: list.length(map.keys($sprite-sizes-map)) > 0;
+
+        @if $has-variable-sizes {
+            --_sprite-size-scale-factor: var(--sprite-size-scale-factor, 1);
+        }
+
+        --_sprite-position-x: var(--sprite-position-x, 0);
+        --_sprite-position-y: var(--sprite-position-y, 0);
+
+        display: block;
+        background-image: url(#{$url});
+        aspect-ratio: 1;
+
+        @if $has-variable-sizes {
+            background-size: calc(#{$sprite-sheet-width} * var(--_sprite-size-scale-factor)) calc(#{$sprite-sheet-height} * var(--_sprite-size-scale-factor));
+            background-position: calc(var(--_sprite-position-x) * var(--_sprite-size-scale-factor) * #{$sprite-size} * -1) calc(var(--_sprite-position-y) * var(--_sprite-size-scale-factor) * #{$sprite-size} * -1);
+            width: calc(#{$sprite-size} * var(--_sprite-size-scale-factor));
+
+            @each $name, $target-sprite-size in $sprite-sizes-map {
+                &--#{$name} {
+                    --sprite-size-scale-factor: #{math.div($target-sprite-size, $sprite-size)};
+                }
+            }
+        }
+
+        @else {
+            background-size: $sprite-sheet-width $sprite-sheet-height;
+            background-position: calc(var(--_sprite-position-x) * #{$sprite-size} * -1) calc(var(--_sprite-position-y) * #{$sprite-size} * -1);
+            width: $sprite-size;
+        }
+
+        @each $name, $position in $sprites-map {
+            &--#{$name} {
+                --sprite-position-x: #{list.nth($position, 1)};
+                --sprite-position-y: #{list.nth($position, 2)};
+            }
+        }
+    }
+}

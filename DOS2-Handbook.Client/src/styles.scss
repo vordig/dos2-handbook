@@ -3,6 +3,7 @@
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
+@use 'scss/mixins/sprite-sheet' as sprite-sheet;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -39,3 +40,27 @@ $dos2-handbook-client-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+$sprite-sheet-url: "./assets/ability-schools.png";
+$ability-school-sprites-map: (
+  "aerotheurge": 2 1,
+  "geomancer": 3 1,
+  "huntsman": 1 0,
+  "hydrosophist": 1 1,
+  "necromancer": 0 2,
+  "polymorph": 2 2,
+  "pyrokinetic": 0 1,
+  "scoundrel": 2 0,
+  "summoning": 1 2,
+  "warfare": 0 0,
+  "sourcery": 3 0,
+  "special-skills": 3 2
+);
+$ability-school-sprites-sizes: (
+  "small": 16px,
+  "medium": 24px,
+  "large": 32px
+);
+
+@include sprite-sheet.define-sprite-sheet($sprite-sheet-url, 32px, 4, 3, "ability-school-icon", $ability-school-sprites-map, $ability-school-sprites-sizes);
