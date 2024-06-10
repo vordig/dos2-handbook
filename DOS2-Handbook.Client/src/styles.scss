@@ -1,9 +1,9 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 @use 'scss/mixins/sprite-sheet' as sprite-sheet;
+@use 'scss/mixins/font-stack' as font-stack;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -21,15 +21,12 @@ $dos2-handbook-client-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$dos2-handbook-client-theme: mat.define-light-theme((
-  color: (
-    primary: $dos2-handbook-client-primary,
-    accent: $dos2-handbook-client-accent,
-    warn: $dos2-handbook-client-warn,
-  ),
-  typography: mat.define-typography-config(),
-  density: 0
-));
+$dos2-handbook-client-theme: mat.define-light-theme((color: (primary: $dos2-handbook-client-primary,
+        accent: $dos2-handbook-client-accent,
+        warn: $dos2-handbook-client-warn,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -38,8 +35,16 @@ $dos2-handbook-client-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  // font-family: font-stack.old-style();
+  font-family: font-stack.slab-serif();
+}
 
 
 $sprite-sheet-url: "./assets/ability-schools.png";
@@ -64,3 +69,26 @@ $ability-school-sprites-sizes: (
 );
 
 @include sprite-sheet.define-sprite-sheet($sprite-sheet-url, 32px, 4, 3, "ability-school-icon", $ability-school-sprites-map, $ability-school-sprites-sizes);
+
+
+$ability-school-colors-map: (
+  "aerotheurge": #5349b0,
+  "geomancer": #7a4520,
+  "huntsman": #717f34,
+  "hydrosophist": #5885af,
+  "necromancer": #a83a96,
+  "polymorph": #fbc246,
+  "pyrokinetic": #da772b,
+  "scoundrel": #5a8886,
+  "summoning": #7e47ac,
+  "warfare": #a22d32,
+  "sourcery": #537c71,
+  "special-skills": #d0b86e
+);
+
+@each $name, $color in $ability-school-colors-map {
+  .ability-school-color--#{$name} {
+    --color: #{$color};
+    color: var(--color);
+  }
+}

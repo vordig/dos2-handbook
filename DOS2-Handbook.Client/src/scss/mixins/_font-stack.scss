@@ -1,0 +1,75 @@
+$_system-ui: system-ui, sans-serif;
+$_transitional: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+$_old-style: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+$_humanist: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+$_geometric-humanist: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+$_classical-humanist: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif;
+$_neo-grotesque: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+$_monospace-slab-serif: 'Nimbus Mono PS', 'Courier New', monospace;
+$_monospace-code: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+$_industrial: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+$_rounded-sans: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+$_slab-serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
+$_antique: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+$_didone: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+$_handwritten: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+
+@function system-ui() {
+    @return $_system-ui;
+}
+
+@function transitional() {
+    @return $_transitional;
+}
+
+@function old-style() {
+    @return $_old-style;
+}
+
+@function humanist() {
+    @return $_humanist;
+}
+
+@function geometric-humanist() {
+    @return $_geometric-humanist;
+}
+
+@function classical-humanist() {
+    @return $_classical-humanist;
+}
+
+@function neo-grotesque() {
+    @return $_neo-grotesque;
+}
+
+@function monospace-slab-serif() {
+    @return $_monospace-slab-serif;
+}
+
+@function monospace-code() {
+    @return $_monospace-code;
+}
+
+@function industrial() {
+    @return $_industrial;
+}
+
+@function rounded-sans() {
+    @return $_rounded-sans;
+}
+
+@function slab-serif() {
+    @return $_slab-serif;
+}
+
+@function antique() {
+    @return $_antique;
+}
+
+@function didone() {
+    @return $_didone;
+}
+
+@function handwritten() {
+    @return $_handwritten;
+}
